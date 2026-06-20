@@ -2,13 +2,18 @@ from flask import Flask, render_template, request, session
 from datetime import timedelta
 import tinydb
 from tinydb import Query
-from google import generativeai as genai  # ✅ תיקון כאן
+from google import generativeai as genai
+import os
+from dotenv import load_dotenv
 
-# הגדרת מפתח API
-genai.configure(api_key="AIzaSyAFoYJT1PGhH_0RSKH_fIZAfAJSqfHXVKc")
+# טוען משתנים מה־.env
+load_dotenv()
+
+# הגדרת מפתח API מה־.env
+genai.configure(api_key=os.getenv("API_KEY"))
 
 # יצירת המודל והשיחה
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-3.1-flash-lite")
 chat = model.start_chat(history=[])
 
 # הגדרת בסיס נתונים
@@ -79,16 +84,18 @@ def sayBay():
 def hi(name):
     return f"Hi {name}!"
 
-# ✅ שיחה מתמשכת עם Gemini
+# שיחה עם Gemini
 @app.route("/ask", methods=["POST"])
 def ask():
     question = request.form.get("question")
     response = chat.send_message(question)
     answer = response.text
 
-    return render_template("Hello.html",
-                           username=session.get("user", "משתמש"),
-                           answer=answer)
+    return render_template(
+        "Hello.html",
+        username=session.get("user", "משתמש"),
+        answer=answer
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
