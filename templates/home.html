@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>האתר של אסף</title>
+
+    <!-- אייקון לטאה שיופיע בכרטיסייה -->
+    <link rel="icon" href="iguana.png" type="image/png">
+
+    <style>
+        body {
+            background: #334444;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            color: rgb(127,127,128);
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-buttons a {
+            background-color: #ddd;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .top-buttons a:hover {
+            background-color: #bbb;
+            transform: scale(1.05);
+        }
+
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px red;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .exit-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px 10px red;
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        button {
+            font-size: 40px;
+            padding: 20px 40px;
+            margin: 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            color: black;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .yellow-btn {
+            background-color: yellow;
+        }
+
+        .yellow-btn:hover {
+            box-shadow: 0 0 30px 10px yellow;
+        }
+
+        .green-btn {
+            background-color: lightgreen;
+        }
+
+        .green-btn:hover {
+            box-shadow: 0 0 30px 10px lightgreen;
+        }
+
+        .blue-btn {
+            background-color: lightskyblue;
+        }
+
+        .blue-btn:hover {
+            box-shadow: 0 0 30px 10px lightskyblue;
+        }
+
+        .explanation {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #fffacd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- כפתור יציאה בצד שמאל למעלה -->
+    <button class="exit-button" onclick="exitSite()">יציאה</button>
+
+    <!-- כפתורי התחברות והרשמה -->
+    <div class="top-buttons">
+        <a href="/login">התחברות</a>
+        <a href="/signup">הרשמה</a>
+    </div>
+
+    <!-- כותרת -->
+    <h1>האתר של אסף</h1>
+
+    <!-- כפתורי האותיות -->
+    <div class="button-container">
+        <button class="yellow-btn">א</button>
+        <button class="green-btn">ס</button>
+        <button class="blue-btn">ף</button>
+    </div>
+
+    <!-- אזור ההסברים -->
+    <div class="explanation" id="explanation"></div>
+
+    <!-- סקריפט לכפתור יציאה -->
+    <script>
+        function exitSite() {
+            alert("אתה עומד לעזוב את האתר של אסף. נתראה!");
+            window.location.href = "/bye";
+        }
+    </script>
+
+</body>
+</html>

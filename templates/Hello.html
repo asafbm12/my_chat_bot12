@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>שלום {{ username }}</title>
+    <link rel="icon" href="iguana.png" type="image/png">
+
+    <style>
+        body {
+            background: #334444;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px #000;
+        }
+
+        form {
+            background-color: #445555;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px #222;
+        }
+
+        label {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        button {
+            background-color: yellow;
+            font-size: 20px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: black;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px 5px yellow;
+        }
+
+        .result {
+            background-color: #223;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            width: 90%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 15px #111;
+        }
+
+        .result h2 {
+            color: #ffeb3b;
+        }
+
+        a.logout {
+            display: inline-block;
+            margin-top: 40px;
+            color: red;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: text-shadow 0.3s;
+        }
+
+        a.logout:hover {
+            text-shadow: 0 0 10px red;
+        }
+
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px red;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .exit-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px 10px red;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="exit-button" onclick="exitSite()">יציאה</button>
+
+    <h1>שלום, {{ username }}!</h1>
+
+    <form action="/ask" method="post">
+        <label for="question">מה ברצונך לשאול את קובי?</label>
+        <input type="text" id="question" name="question" placeholder="הקלד כאן את השאלה..." required>
+        <button type="submit">שלח</button>
+    </form>
+
+    {% if answer %}
+    <div class="result">
+        <h2>תשובת קובי:</h2>
+        <p>{{ answer }}</p>
+    </div>
+    {% endif %}
+
+    <a class="logout" href="/logout">⬅ התנתק</a>
+
+    <script>
+        function exitSite() {
+            alert("אתה עומד לעזוב את העמוד. נתראה!");
+            window.location.href = "/bye";
+        }
+    </script>
+
+</body>
+</html>
